@@ -18,6 +18,7 @@ app.title = "Dashboard energia"
 server = app.server
 app.config.suppress_callback_exceptions = True
 
+# Actualización para el taller de control de versiones
 
 # Load data from csv - nueva rama
 def load_data():
