@@ -6,6 +6,7 @@ import plotly.graph_objs as go
 import numpy as np
 import pandas as pd
 import datetime as dt
+import os
 
 
 
@@ -22,14 +23,17 @@ app.config.suppress_callback_exceptions = True
 
 # Load data from csv - nueva rama
 def load_data():
+    # Ruta absoluta al csv para que la app funcione desde cualquier directorio
+    ruta_csv = os.path.join(os.path.dirname(os.path.abspath(__file__)), "datos_energia.csv")
+
     # Leer el archivo csv con los datos históricos y el pronóstico
-    df = pd.read_csv("datos_energia.csv")
+    df = pd.read_csv(ruta_csv)
 
     # Convertir la columna de fecha a formato datetime
     df["time"] = pd.to_datetime(df["time"])
 
-    # Usar la fecha como índice del DataFrame
-    df = df.set_index("time")
+    # Usar la fecha como índice del DataFrame y ordenarla cronológicamente
+    df = df.set_index("time").sort_index()
 
     return df
 
