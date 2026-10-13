@@ -19,7 +19,7 @@ server = app.server
 app.config.suppress_callback_exceptions = True
 
 
-# Load data from csv
+# Load data from csv - nueva rama
 def load_data():
     # Leer el archivo csv con los datos históricos y el pronóstico
     df = pd.read_csv("datos_energia.csv")
